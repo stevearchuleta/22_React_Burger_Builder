@@ -26,9 +26,19 @@ class BurgerBuilder extends Component {
          meat: 0
       },
       totalPrice: 4,
-      purchasable: false
+      purchasable: false,
+      purchasing: false
    }
 
+
+   purchaseHandler = () => {
+      this.setState({purchasing: true});
+   }
+
+   purchaseCancelHandler = () => {
+      this.setState({purchasing: false});
+   }
+   
    updatePurchaseState (ingredients) {
       const sum = Object.keys(ingredients) //in order to sum up all of the ingreients, I first convert the ingredients object into an array of string entries ('salad', 'bacon', 'cheese', 'meat').
          .map(igKey => {
@@ -82,7 +92,7 @@ class BurgerBuilder extends Component {
       
       return (
          <Aux>
-            <Modal>
+            <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                <OrderSummary ingredients={this.state.ingredients} />
             </Modal>
             <Burger ingredients={this.state.ingredients}/>
@@ -91,6 +101,7 @@ class BurgerBuilder extends Component {
                ingredientRemoved={this.removeIngreientHandler}
                disabled={disabledInfo}
                purchasable={this.state.purchasable}
+               ordered={this.purchaseHandler}
                price={this.state.totalPrice}
                /> 
          </Aux>
