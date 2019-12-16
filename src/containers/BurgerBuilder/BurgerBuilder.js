@@ -28,13 +28,13 @@ class BurgerBuilder extends Component {
    }
 
    updatePurchaseState (ingredients) {
-      const sum = Object.keys(ingredients)
+      const sum = Object.keys(ingredients) //in order to sum up all of the ingreients, I first convert the ingredients object into an array of string entries ('salad', 'bacon', 'cheese', 'meat').
          .map(igKey => {
-            return ingredients[igKey] // yeilds an array of values
+            return ingredients[igKey] // yeilds an array of values (a particular value for a given key).
          })
          .reduce((sum, el) => {
-            return sum + el; //sum representing total amount of ingredients
-         }, 0);
+            return sum + el; //reduce the array to a single number: the sum that represents a total amount of ingredients.
+         }, 0); //zero (the second argument) is the starting number...
       this.setState({purchasable: sum > 0});
    }
 
@@ -87,7 +87,7 @@ class BurgerBuilder extends Component {
                disabled={disabledInfo}
                purchasable={this.state.purchasable}
                price={this.state.totalPrice}
-               />
+               /> 
          </Aux>
       );
    }
