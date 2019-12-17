@@ -38,7 +38,11 @@ class BurgerBuilder extends Component {
    purchaseCancelHandler = () => {
       this.setState({purchasing: false});
    }
-   
+
+   purchaseContinueHandler = () => {
+      alert("You Continue!")
+   }
+
    updatePurchaseState (ingredients) {
       const sum = Object.keys(ingredients) //in order to sum up all of the ingreients, I first convert the ingredients object into an array of string entries ('salad', 'bacon', 'cheese', 'meat').
          .map(igKey => {
@@ -93,7 +97,11 @@ class BurgerBuilder extends Component {
       return (
          <Aux>
             <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-               <OrderSummary ingredients={this.state.ingredients} />
+               <OrderSummary 
+                  ingredients={this.state.ingredients}
+                  purchaseCancelled={this.purchaseCancelHandler}
+                  purchaseContinued={this.purchaseContinueHandler}
+                  />
             </Modal>
             <Burger ingredients={this.state.ingredients}/>
             <BuildControls 
