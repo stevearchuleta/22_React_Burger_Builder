@@ -8,7 +8,9 @@ const sideDrawer = (props) => {
    //...conditionally attach css classes, before returning(), to play animation when drawer opens. .Open class. .Close Class.
    return(
       <div className={classes.SideDrawer}>
-         <Logo />
+         <div className={classes.Logo}>
+            <Logo />
+         </div>
          <nav>
             <NavigationItems />
          </nav>
