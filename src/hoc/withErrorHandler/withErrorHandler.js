@@ -9,13 +9,18 @@ const withErrorHandler = ( WrappedComponent, axios ) => {
       }
       
       componentWillMount () {
-         axios.interceptors.request.use(req => {
+         this.reqInterceptor = axios.interceptors.request.use(req => {
             this.setState({error: null}); //this will clear any errors
             return req;
          });
-         axios.interceptors.response.use(res => res, error => {
+         this.resInterceptor = axios.interceptors.response.use(res => res, error => {
             this.setState({error: error}) //the error value here is the second argument in the use method and it is an object from my Firebase server. It shows in the modal.
          });
+      }
+
+      componentWillUnmount() {
+         axios.interceptors.request.eject(this.reqInterceptor);
+         axios.interceptors.request.eject(this.resInterceptor);
       }
 
       errorConfirmedHandler = () => {
