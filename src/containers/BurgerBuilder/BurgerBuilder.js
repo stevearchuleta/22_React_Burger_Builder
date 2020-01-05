@@ -32,6 +32,7 @@ class BurgerBuilder extends Component {
    }
 
    componentDidMount() {
+      console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object wraps the BurgerBuilder component
       axios.get('https://react-my-burger-5e060.firebaseio.com/ingredients.json')
          .then(response => {
             this.setState( { ingredients: response.data } );
@@ -50,32 +51,33 @@ class BurgerBuilder extends Component {
    }
 
    purchaseContinueHandler = () => {
-      // alert("You Continue!")
-      this.setState({ loading: true });
-      const order = {
-         ingredients: this.state.ingredients,
-         price: this.state.totalPrice,
-         customer: {
-            name: 'Steve Archuleta',
-            address: {
-               streetAddress: '6958 Treasure Way',
-               city: 'Sacramento',
-               state: 'California' 
-            },
-         email: 'stevearchuleta@me.com'
-         },
-         deliveryMethod: 'Uber Eats'
-
-      }
+      // // alert("You Continue!")
+      // this.setState({ loading: true });
       
-      axios.post('/orders.json', order)
-         .then(response => {
-            this.setState({ loading: false, purchasing: false });
-         } )
-         .catch(error => {
-            this.setState({ loading: false, purchasing: false });
-         } );
+      // const order = {
+      //    ingredients: this.state.ingredients,
+      //    price: this.state.totalPrice,
+      //    customer: {
+      //       name: 'Steve Archuleta',
+      //       address: {
+      //          streetAddress: '6958 Treasure Way',
+      //          city: 'Sacramento',
+      //          state: 'California' 
+      //       },
+      //    email: 'stevearchuleta@me.com'
+      //    },
+      //    deliveryMethod: 'Uber Eats'
 
+      // }
+      
+      // axios.post('/orders.json', order)
+      //    .then(response => {
+      //       this.setState({ loading: false, purchasing: false });
+      //    } )
+      //    .catch(error => {
+      //       this.setState({ loading: false, purchasing: false });
+      //    } );
+      this.props.history.push('/checkout');
    }
 
    updatePurchaseState (ingredients) {
