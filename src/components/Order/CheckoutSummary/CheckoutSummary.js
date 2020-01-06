@@ -4,8 +4,8 @@ import Button from '../../UI/Button/Button';
 import classes from './CheckoutSummary.css';
 
 const checkoutSummary = (props) => {
-   return(
-      <div className={classes.checkoutSummary}>
+   return (
+      <div className={classes.CheckoutSummary}>
          <h1>Your Burger Will Taste Delicious!</h1>
          <div style={{width: '100%', margin: 'auto'}}>
             <Burger ingredients={props.ingredients} />
