@@ -32,7 +32,7 @@ class BurgerBuilder extends Component {
    }
 
    componentDidMount() {
-      console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object wraps the BurgerBuilder component
+      console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object loads the BurgerBuilder component in App.js
       axios.get('https://react-my-burger-5e060.firebaseio.com/ingredients.json')
          .then(response => {
             this.setState( { ingredients: response.data } );
@@ -52,17 +52,17 @@ class BurgerBuilder extends Component {
 
    purchaseContinueHandler = () => {
       // // alert("You Continue!")
-      
-      
-      const queryParams = [];
+      const queryParams = []; 
+      //now push ingredients into this array in an encoded manner; i is the key (property names of the ingredients - meat, cheese, lettuce, bacon).
       for (let i in this.state.ingredients) {
          queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-      }
+      } 
+      //use JS helper method (encodedURIComponent), so that the user-selected ingredients can be coded into the URL; i is the key (property names of the ingredients - meat, cheese, lettuce, bacon): therefore... property name string = property value string.
       queryParams.push('price=' + this.state.totalPrice);
-      const queryString = queryParams.join('&')
+      const queryString = queryParams.join('&') //join strings.
       this.props.history.push({
          pathname: '/checkout',
-         search: '?' + queryString
+         search: '?' + queryString //push queryString to the history URL
       });
    }
 
