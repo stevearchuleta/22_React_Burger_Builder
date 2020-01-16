@@ -8,13 +8,69 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
    state = {
-      name: '',
-      email: '',
-      address: {
-         street: '',
-         city: '',
-         state: '',
-         zipCode: '' 
+      orderForm: {
+            name: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'text',
+                  placeholder: 'Your Full Name'
+               },
+               value: ''
+            },
+            streetAddress: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'text',
+                  placeholder: 'Your Street Address'
+               },
+               value: ''
+            },
+            city: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'text',
+                  placeholder: 'Your City'
+               },
+               value: ''
+            },
+            state: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'text',
+                  placeholder: 'Your State'
+               },
+               value: ''
+            },
+            zipCode: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'number',
+                  placeholder: 'Your Zip Code'
+               },
+               value: ''
+            },
+            email: {
+               elementType: 'input',
+               elementConfig: {
+                  type: 'email',
+                  placeholder: 'Your Email Address'
+               },
+               value: ''
+            },
+            deliveryMethod: {
+               elementType: 'select',
+               elementConfig: {
+                  options: [
+                     {value: 'fastest', displayValue: 'Fastest'},
+                     {value: 'cheapest', displayValue: 'Cheapest'},
+                     {value: 'ubereats', displayValue: 'Uber Eats'},
+                     {value: 'doorDash', displayValue: 'Door Dash'},
+                     {value: 'grubhub', displayValue: 'Grub Hub'}
+                     
+                  ]
+               },
+               value: ''
+            },
       },
       loading: false
    }
@@ -25,18 +81,7 @@ class ContactData extends Component {
       this.setState( { loading: true } );
       const order = {
          ingredients: this.props.ingredients,
-         price: this.props.price,
-         customer: {
-            name: 'Steve Archuleta',
-            address: {
-               streetAddress: '6958 Treasure Way',
-               city: 'Sacramento',
-               state: 'California' 
-            },
-         email: 'stevearchuleta@me.com'
-         },
-         deliveryMethod: 'Uber Eats'
-
+         price: this.props.price
       }
       
       axios.post('/orders.json', order)
@@ -52,7 +97,7 @@ class ContactData extends Component {
    render () {
       let form = (
          <form>
-         <Input inputtype="input" type='text' name='name' placeholder='Your Name'/>
+         <Input elementType='...' elementConfig='...' value='...'/>
          <Input inputtype="input" type='email' name='email' placeholder='Your Email'/>
          <Input inputtype="input" type='text' name='street' placeholder='Your Street Address'/>
          <Input inputtype="input" type='text' name='city' placeholder='Your City'/>
