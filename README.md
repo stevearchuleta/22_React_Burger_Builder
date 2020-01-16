@@ -1,3 +1,144 @@
+
+
+
+# React Burger Builder Course Project (Udemy)
+
+Project Title:
+React Burger Builder App
+(guided by: Maximilian Schwarzm¨ller - Udemy)
+
+Getting Started:
+   This is a dyamic React application. The backend panel uses Node.js, Express, Axios, and Firebase. It is created for beginning React developers who know HTML, CSS, and JavaScript.
+
+Prerequsite:
+   Use IDE or Text Editor; HTML5, CSS3, CSS modules, and JavaScript for customization.
+
+Folder Structure:
+  
+  config
+    jest
+      cssTransform.js
+      fileTransform.js
+    env.js
+    paths.js
+    polyfills.js
+    webpack.config.dev.js
+    webpack.config,prod.js
+    webpackDevServer.config.js
+  
+  node_modules
+  
+  public
+    favicon.io
+    index.html
+    manifest.json
+  
+  scripts
+    build.js
+    start.js
+    test.js
+  
+  src
+    assets
+      images
+        burger-logo.png
+  
+  components
+    Burger
+      BuildControls
+        BuildControl
+          BuildContrl.css
+          BuildControl.js
+      BuildControls.css
+      BuildControls.js
+      
+      BurgerIngredient
+        BurgerIngredient.css
+        BurgerIngredient.js
+      
+      OrderSummary
+        OrderSummary.js
+      Burger.css
+      Burger.js
+
+    Logo
+      Logo.css
+      Logo.js
+
+    Navigation
+      NavigationItems
+        NavigationItem
+          NavigationItem.css
+          NavigationItem.js
+        NavigationItems.css
+        NavigationItems.js
+
+      SideDrawer
+        DrawerToggle
+          DrawerToggle.css
+          DrawerToggle.js
+        SideDrawer.css
+        SideDrawer.js
+
+      Toolbar
+        Toolbar.css
+        Toolbar.js
+
+    Order
+      CheckoutSummary
+        CheckoutSummary.css
+        CheckoutSummary.js
+      Order.css
+      Order.js
+
+    UI
+      Backdrop
+        Backdrop.css
+        Backdrop.js
+      Button
+        Button.css
+        Button.js
+      Modal
+        Modal.css
+        Modal.js
+      Spinner
+        Spinner.css
+        Spinner.js
+
+  containers
+    BurgerBuilder
+      BurgerBuilder.js
+    
+    Checkout
+      ControlData
+        ControlData
+      ContactData.css
+      ContactData.js
+    
+    Orders
+      Orders.js
+
+  hoc
+    Aux
+      Aux.js
+    Layout
+      Layout.css
+      Layout.js
+    withErrorHandler
+      withErrorHandler.js
+  App.js
+  App.test.js
+  axios-orders.js
+  index.css
+  index.js
+  registerServiceWorker.js
+  .gitignore
+  how-to-use.text
+  package-lock.json
+  package.json
+  README.md
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
