@@ -46,18 +46,19 @@ class BurgerBuilder extends Component {
 
    purchaseContinueHandler = () => {
       // // alert("You Continue!")
-      const queryParams = []; 
+      //const queryParams = []; 
       //now push ingredients into this array in an encoded manner; i is the key (property names of the ingredients - meat, cheese, lettuce, bacon).
-      for (let i in this.state.ingredients) {
-         queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
-      } 
+      // for (let i in this.state.ingredients) {
+      //    queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+      // } 
       //use JS helper method (encodedURIComponent), so that the user-selected ingredients can be coded into the URL; i is the key (property names of the ingredients - meat, cheese, lettuce, bacon): therefore... property name string = property value string.
-      queryParams.push('price=' + this.state.totalPrice);
-      const queryString = queryParams.join('&') //join strings.
-      this.props.history.push({
-         pathname: '/checkout',
-         search: '?' + queryString //push queryString to the history URL
-      });
+      // queryParams.push('price=' + this.state.totalPrice);
+      // const queryString = queryParams.join('&') //join strings.
+      this.props.history.push('/checkout');
+      // this.props.history.push({
+      //    pathname: '/checkout',
+      //    search: '?' + queryString //push queryString to the history URL
+      // });
    }
 
    updatePurchaseState (ingredients) {
