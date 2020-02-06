@@ -27,13 +27,13 @@ class BurgerBuilder extends Component {
 
    componentDidMount() {
       console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object loads the BurgerBuilder component in App.js
-      // axios.get('https://react-my-burger-5e060.firebaseio.com/ingredients.json')
-      //    .then(response => {
-      //       this.setState( { ingredients: response.data } );
-      //    })
-      //       .catch(error => {
-      //          this.setState({error: true})
-      //       });
+      axios.get('https://react-my-burger-5e060.firebaseio.com/ingredients.json')
+         .then(response => {
+            this.setState( { ingredients: response.data } );
+         })
+            .catch(error => {
+               this.setState({error: true})
+            });
    }
 
    purchaseHandler = () => {
