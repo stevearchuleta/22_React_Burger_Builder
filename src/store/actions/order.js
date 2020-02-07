@@ -16,7 +16,7 @@ export const purchaseBurgerFail = (error) => { //syncronous action creator
    };
 };
 
-export const purchaseBurgerStart = (orderData) => {
+export const purchaseBurgerStart = (orderData) => { //asynchronous action creator 
    return dispatch => {
       axios.post( '/orders.json', orderData )
       .then(response => {
