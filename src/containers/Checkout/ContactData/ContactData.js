@@ -125,14 +125,6 @@ class ContactData extends Component {
          orderData: formData
       }
       
-      axios.post('/orders.json', order)
-         .then(response => {
-            this.setState( { loading: false } );
-            this.props.history.push('/') //redirect to BurgerBuilder home page
-         } )
-         .catch(error => {
-            this.setState( { loading: false } );
-         } );
    }
 
    checkValidity( value, rules ) {
