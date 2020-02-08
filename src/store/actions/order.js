@@ -41,3 +41,46 @@ export const purchaseInit = () => { //action creator
       type: actionTypes.PURCHASE_INIT
    };
 };
+
+export const fetchOrdersSuccess = (orders) => { //action creator
+   return {
+      type: actionTypes.FETCH_ORDERS_SUCCESS,
+      orders: orders
+   };
+};
+
+export const fetchOrdersFail = (error) => { //action creator
+   return {
+      type: actionTypes.FETCH_ORDERS_FAIL,
+      error: error
+   };
+};
+
+export const fetchOrdersStart = () => { //action creator
+   return {
+      type: actionTypes.FETCH_ORDERS_START
+      
+   };
+};
+
+export const fetchOrders = () => {
+   return dispatch => {
+      dispatch(fetchOrdersStart());
+      axios.get('/orders.json') //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
+      .then(res => {
+         console.log(res.data); //retruns the JS order object from Firebase
+         const fetchedOrders = [];
+         for (let key in res.data) {
+               fetchedOrders.push({
+                  //push a NEW object onto the fetchedOrders array by using the spread operator ... to distribute all of the properties of the JS order object from Firebase.
+                  ...res.data[key], 
+                  id: key //and add an id property whose value is the key of the order object (this unique key was created by Firebase and fetched herein. 
+                  } );
+         } 
+         dispatch(fetchOrdersSuccess(fetchedOrders))
+      } )
+      .catch(err => {
+        dispatch(fetchOrdersFail(err));
+      });
+   };
+};
