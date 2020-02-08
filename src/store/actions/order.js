@@ -35,3 +35,9 @@ export const purchaseBurger = (orderData) => { //asynchronous action creator
       } );
    };
 };
+
+export const purchaseInit = () => { //action creator
+   return {
+      type: actionTypes.PURCHASE_INIT
+   };
+};
