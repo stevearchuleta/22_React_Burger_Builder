@@ -164,13 +164,14 @@ class ContactData extends Component {
    }
 
    render () {
-      const formElementsArray = [];
+      const formElementsArray = []; //convert state object into an iterable array
       for ( let key in this.state.orderForm ) {
          formElementsArray.push({
             id: key,
             config: this.state.orderForm[key]
          });
       }
+      //loop through array to create a dynamically generated input form
       let form = (
          <form onSubmit={this.orderHandler}> 
          {formElementsArray.map(formElement => (
