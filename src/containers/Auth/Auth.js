@@ -83,7 +83,7 @@ class Auth extends Component {
     );
   };
 
-  switchAuthModeHandler = () => {
+  switchAuthModeHandler = () => { //a toggle method
     this.setState(prevState => {
       return { isSignUp: !prevState.isSignUp };
     });
@@ -129,7 +129,7 @@ class Auth extends Component {
           <Button btnType="Success">SUBMIT</Button>
         </form>
         <Button clicked={this.switchAuthModeHandler} btnType="Danger">
-          CLICK TOGGLE TO {this.state.isSignUp ? "SIGNIN MODE" : "SIGNUP MODE"}
+          CLICK HERE TO TOGGLE INTO THE {this.state.isSignUp ? "'SIGNIN MODE'" : "'SIGNUP MODE'"}
         </Button>
       </div>
     );
