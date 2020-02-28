@@ -22,10 +22,10 @@ export const purchaseBurgerStart = () => { //action creator
    };
 };
 
-export const purchaseBurger = (orderData) => { //asynchronous action creator 
+export const purchaseBurger = (orderData, token) => { //asynchronous action creator 
    return dispatch => {
       dispatch(purchaseBurgerStart());
-      axios.post( '/orders.json', orderData )
+      axios.post( '/orders.json?auth=' + token, orderData )
       .then(response => {
          console.log(response.data);
          dispatch( purchaseBurgerSuccess(response.data.name, orderData) ) ;
@@ -63,10 +63,10 @@ export const fetchOrdersStart = () => { //action creator
    };
 };
 
-export const fetchOrders = () => {
-   return dispatch => {
+export const fetchOrders = (token) => { //asynchronous action creator
+   return (dispatch, getState) => {
       dispatch(fetchOrdersStart());
-      axios.get('/orders.json') //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
+      axios.get('/orders.json?auth=' + token) //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
       .then(res => {
          console.log(res.data); //retruns the JS order object from Firebase
          const fetchedOrders = [];
