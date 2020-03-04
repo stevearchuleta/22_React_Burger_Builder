@@ -20,7 +20,7 @@ class BurgerBuilder extends Component {
    }
 
    componentDidMount() {
-      console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object loads the BurgerBuilder component in App.js
+      // console.log(this.props); //notice in DevTools that I have access to the history, location, and match props...this is because the Route object loads the BurgerBuilder component in App.js
      this.props.onInitIngredients();
    }
 

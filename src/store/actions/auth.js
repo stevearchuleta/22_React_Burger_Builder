@@ -57,7 +57,7 @@ export const auth = (email, password, isSignup) => { //auth action creator
       }
       axios.post(url, authData)
       .then(response => {
-         console.log(response);
+         // console.log(response);
          const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
          localStorage.setItem('token', response.data.idToken); //store token in local storage
          localStorage.setItem('expirationDate', expirationDate); //store expirationDate in local storage  whenever a token is aquired (persist signin mode accross sessions)

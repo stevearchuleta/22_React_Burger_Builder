@@ -116,7 +116,7 @@ class ContactData extends Component {
 
    orderHandler = (event) => {
       event.preventDefault();
-      console.log(this.props.ingredients);
+      // console.log(this.props.ingredients);
       const formData = {}; //now create key-value pairs using a for-in iterator.
       for ( let formElementIdentifier in this.state.orderForm ) {
          formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;

@@ -27,7 +27,7 @@ export const purchaseBurger = (orderData, token) => { //asynchronous action crea
       dispatch(purchaseBurgerStart());
       axios.post( '/orders.json?auth=' + token, orderData )
       .then(response => {
-         console.log(response.data);
+         // console.log(response.data);
          dispatch( purchaseBurgerSuccess(response.data.name, orderData) ) ;
       } )
       .catch(error => {
@@ -69,7 +69,7 @@ export const fetchOrders = (token, userId) => { //asynchronous action creator
       const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
       axios.get('/orders.json' + queryParams) //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
       .then(res => {
-         console.log(res.data); //retruns the JS order object from Firebase
+         // console.log(res.data); //retruns the JS order object from Firebase
          const fetchedOrders = [];
          for (let key in res.data) {
                fetchedOrders.push({

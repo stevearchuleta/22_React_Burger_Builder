@@ -4,9 +4,9 @@ import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
       //componentWillUpdate is no longer recommended by react, but this lifecycle hook was added as a testing/learning activity. Therefore, this particular component could be changed back into a functional component. 
-      componentWillUpdate() {
-         console.log('[OrderSummary] WillUpdate');
-      }
+      // componentWillUpdate() {
+      //    console.log('[OrderSummary] WillUpdate');
+      // }
   
          render() {
 
