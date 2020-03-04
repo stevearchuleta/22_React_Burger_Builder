@@ -29,14 +29,15 @@ componentDidMount () {
       );
 
       //routes for authenticated users
-      if (this.props.isAuthenticated) {
+      if ( this.props.isAuthenticated ) {
         routes = (
           <Switch>
-            <Route path='/checkout' component={Checkout} />
-            <Route path='/orders' component={Orders} />
-            <Route path='/logout' component={Logout} />
-            <Route path='/' exact component={BurgerBuilder} />
-        </Switch>
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/orders" component={Orders} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/" exact component={BurgerBuilder} />
+            <Redirect to="/" />
+          </Switch>
         );
       }
 
@@ -44,9 +45,9 @@ componentDidMount () {
     return (
       <div>
 
-          <Layout>
-            {routes}
-          </Layout>
+        <Layout>
+          {routes}
+        </Layout>
 
       </div>
     );
@@ -56,8 +57,8 @@ componentDidMount () {
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -65,4 +66,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter( connect( mapStateToProps, mapDispatchToProps )( App ) );

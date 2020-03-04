@@ -63,10 +63,11 @@ export const fetchOrdersStart = () => { //action creator
    };
 };
 
-export const fetchOrders = (token) => { //asynchronous action creator
+export const fetchOrders = (token, userId) => { //asynchronous action creator
    return (dispatch, getState) => {
       dispatch(fetchOrdersStart());
-      axios.get('/orders.json?auth=' + token) //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
+      const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+      axios.get('/orders.json' + queryParams) //refers to Firebase orders.json node - reminder: I already set the base url as an axios instance in the imported file above.
       .then(res => {
          console.log(res.data); //retruns the JS order object from Firebase
          const fetchedOrders = [];
