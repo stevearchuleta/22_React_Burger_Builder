@@ -132,7 +132,6 @@ class ContactData extends Component {
       
    }
 
-   
 
    inputChangedHandler = (event, inputIdentifier) => {
      

@@ -12,8 +12,8 @@ import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
 import authReducer from './store/reducers/auth';
 
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//by accessing NODE_ENV and writing a ternary expression, I ensure that Redux dev tools are only available in the development environment and not accessable to the public.
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
    burgerBuilder: burgerBuilderReducer,
