@@ -7,6 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./Auth.css";
 import * as actions from "../../store/actions/index";
+import { updateObject } from '../../shared/utility';
 
 class Auth extends Component {
   state = {
@@ -64,11 +65,9 @@ class Auth extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    const updatedControls = {
-      ...this.state.controls,
-      //only one of the properties in controls object will be overwrittien... controlName
-      [controlName]: {
-        ...this.state.controls[controlName],
+    // this.state.controls is the total controls object
+    const updatedControls = updateObject(this.state.controls, {
+      [controlName]: updateObject(this.state.controls[controlName], {
         //overwrite value; and overwrite valid with validation property rules
         value: event.target.value,
         valid: this.checkValidity(
@@ -76,10 +75,10 @@ class Auth extends Component {
           this.state.controls[controlName].validation
         ),
         touched: true
-      }
-    };
+      } )
+    } );
     this.setState({ controls: updatedControls });
-  };
+  }
 
   submitHandler = event => {
     event.preventDefault(); //prevent page from reloading
